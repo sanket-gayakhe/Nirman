@@ -193,11 +193,9 @@ joblib.dump(
     OUTPUT_MODEL
 )
 
-
 print("\nModel saved to:")
 
 print(OUTPUT_MODEL)
-
 
 print("\n" + "=" * 70)
 print("DONE")
