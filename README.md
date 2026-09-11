@@ -61,32 +61,7 @@ Provides detailed information about individual projects, including:
 * Final risk score
 * Risk classification
 * Explainable risk reasons
-
-🧠 AI & Risk Assessment
-Nirman AI uses a hybrid approach combining:
-              PROJECT DATA
-                   │
-                   ▼
-          Feature Engineering
-                   │
-          ┌────────┴────────┐
-          │                 │
-          ▼                 ▼
-       XGBoost        Rule-Based Engine
-          │                 │
-          │                 ├── Cost Risk
-          │                 ├── Schedule Risk
-          │                 ├── Progress Risk
-          │                 └── Financial Risk
-          │                 │
-          └────────┬────────┘
-                   ▼
-            Final Risk Score
-                   │
-                   ▼
-       LOW / MEDIUM / HIGH /
-             CRITICAL
-
+  
 🤖 Machine Learning Model
 The project experiments with multiple classification approaches for cost-overrun prediction:
 * Logistic Regression
@@ -211,54 +186,7 @@ Low physical progress
 Expenditure is significantly ahead of physical progress
 Expenditure exceeds revised project cost
 This allows users to understand why a project is considered risky, rather than receiving only an unexplained score.
-
-🏗️ System Architecture
-┌───────────────────────────────┐
-│       PROJECT DATA            │
-│ Cost / Expenditure / Progress │
-│ Dates / State / Agency        │
-└───────────────┬───────────────┘
-                │
-                ▼
-┌───────────────────────────────┐
-│      DATA PROCESSING          │
-│ Cleaning + Feature Engineering│
-└───────────────┬───────────────┘
-                │
-        ┌───────┴────────┐
-        │                │
-        ▼                ▼
-┌──────────────┐  ┌────────────────┐
-│   XGBoost    │  │  Rule Engine   │
-│ ML Probability│  │ Cost           │
-│              │  │ Schedule       │
-│              │  │ Progress       │
-│              │  │ Financial      │
-└──────┬───────┘  └───────┬────────┘
-       │                  │
-       └────────┬─────────┘
-                ▼
-      ┌─────────────────────┐
-      │  FINAL RISK SCORE   │
-      └──────────┬──────────┘
-                 ▼
-      ┌─────────────────────┐
-      │ LOW / MEDIUM / HIGH │
-      │      / CRITICAL     │
-      └──────────┬──────────┘
-                 │
-                 ▼
-      ┌─────────────────────┐
-      │     FASTAPI         │
-      │      BACKEND        │
-      └──────────┬──────────┘
-                 │ REST / JSON
-                 ▼
-      ┌─────────────────────┐
-      │    REACT + VITE     │
-      │      FRONTEND       │
-      └─────────────────────┘
-
+ 
 🛠️ Technology Stack
 Machine Learning & Data
 * Python
@@ -284,41 +212,6 @@ Data Storage
 The current implementation uses processed CSV datasets:
 data/processed/ml_features.csv
 data/processed/final_project_risk.csv
-
-📁 Project Structure
-Nirman/
-│
-├── backend/
-│   └── main.py
-│
-├── data/
-│   ├── raw/
-│   └── processed/
-│       ├── ml_features.csv
-│       └── final_project_risk.csv
-│
-├── frontend/
-│   ├── src/
-│   │   ├── App.jsx
-│   │   └── ...
-│   ├── package.json
-│   └── ...
-│
-├── models/
-│   ├── cost_overrun_model.pkl
-│   ├── random_forest_cost_model.pkl
-│   └── xgboost_cost_model.pkl
-│
-├── src/
-│   ├── feature_engineering.py
-│   ├── train_cost_model.py
-│   ├── train_random_forest.py
-│   ├── train_xgboost.py
-│   ├── risk_engine.py
-│   └── ...
-│
-├── requirements.txt
-└── README.md
 
 🔄 End-to-End Workflow
 Step 1 — Raw Data
